@@ -1,0 +1,37 @@
+server:
+  servlet:
+    encoding:
+      charset: utf-8
+      enabled: true
+
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/board?characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 1234
+
+  profiles:
+    active: dev
+
+  servlet:
+    multipart:
+      max-file-size: 20MB  #최대 파일 사이즈를 20MB로 지정
+      location: C:/Users/User/Desktop/files #피일 저장 경로
+      max-request-size: 20MB
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true #To beautify or pretty print the SQL
+        show_sql: true #show sql
+
+logging:
+  level:
+    org.hibernate:
+      type.descriptor.sql: trace #show parameter binding
+      SQL: DEBUG
